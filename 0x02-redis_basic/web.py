@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-""" Implementing an expiring web cache and tracker
-    obtain the HTML content of a particular URL and returns it """
+""" Implementing an expiring web cache and tracker obtain the HTML content of a particular URL and returns it """
 
 import redis
 import requests
@@ -9,8 +8,9 @@ count = 0
 
 def get_page(url: str) -> str:
     """ track how many times a particular URL was accessed in the key
-        "count:{url}"
-        and cache the result with an expiration time of 10 seconds """
+        "count:{url}" and cache the result with an expiration time of 10 second
+        s """
+
     r.set(f"cached:{url}", count)
     resp = requests.get(url)
     r.incr(f"count:{url}")
